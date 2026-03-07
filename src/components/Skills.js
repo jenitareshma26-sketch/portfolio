@@ -1,139 +1,138 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SiPython, SiJavascript, SiReact, SiHtml5, SiArduino, SiGit, SiCanva, SiC } from 'react-icons/si';
-import { FaMicrochip, FaRobot, FaLightbulb, FaNetworkWired, FaCss3Alt, FaCode } from 'react-icons/fa';
+import { SiPython, SiJavascript, SiReact, SiHtml5, SiArduino, SiGit, SiCanva, SiC, SiJupyter } from 'react-icons/si';
+import { FaJava, FaMicrochip, FaRobot, FaLightbulb, FaNetworkWired, FaCss3Alt, FaCode } from 'react-icons/fa';
 
 const Skills = () => {
-  const skillCategories = [
+  const categories = [
     {
       title: 'Programming Languages',
       skills: [
-        { name: 'Python', icon: SiPython, level: 90, description: 'Data Analysis & Automation' },
-        { name: 'C Programming', icon: SiC, level: 85, description: 'Embedded Systems' },
-        { name: 'JavaScript', icon: SiJavascript, level: 88, description: 'Web Development' }
+        { name: 'Python', icon: SiPython, level: 90 },
+        { name: 'C', icon: SiC, level: 85 },
+        { name: 'JavaScript', icon: SiJavascript, level: 80 },
+        { name: 'Java', icon: FaJava, level: 70 }
       ]
     },
     {
       title: 'Web Development',
       skills: [
-        { name: 'React', icon: SiReact, level: 87, description: 'Frontend Framework' },
-        { name: 'HTML', icon: SiHtml5, level: 92, description: 'Markup Language' },
-        { name: 'CSS', icon: FaCss3Alt, level: 90, description: 'Styling & Design' },
-        { name: 'FastUI', icon: FaLightbulb, level: 80, description: 'Rapid UI Development' }
+        { name: 'HTML', icon: SiHtml5, level: 92 },
+        { name: 'CSS', icon: FaCss3Alt, level: 88 },
+        { name: 'React', icon: SiReact, level: 82 },
+        { name: 'FastUI', icon: FaLightbulb, level: 70 }
       ]
     },
     {
       title: 'IoT & Embedded Systems',
       skills: [
-        { name: 'Arduino', icon: SiArduino, level: 88, description: 'Microcontroller Programming' },
-        { name: 'ESP8266', icon: FaNetworkWired, level: 85, description: 'WiFi Module Integration' },
-        { name: 'Sensor Integration', icon: FaMicrochip, level: 86, description: 'Hardware Interface' },
-        { name: 'Smart Automation', icon: FaRobot, level: 84, description: 'IoT Solutions' }
+        { name: 'Arduino', icon: SiArduino, level: 88 },
+        { name: 'ESP8266', icon: FaNetworkWired, level: 82 },
+        { name: 'Sensors', icon: FaMicrochip, level: 85 },
+        { name: 'Automation', icon: FaRobot, level: 78 }
       ]
     },
     {
-      title: 'Tools',
+      title: 'Development Tools',
       skills: [
-        { name: 'Git', icon: SiGit, level: 89, description: 'Version Control' },
-        { name: 'VS Code', icon: FaCode, level: 92, description: 'Code Editor' },
-        { name: 'Canva', icon: SiCanva, level: 85, description: 'Design Tool' }
+        { name: 'Git', icon: SiGit, level: 85 },
+        { name: 'VS Code', icon: FaCode, level: 92 },
+        { name: 'Canva', icon: SiCanva, level: 80 },
+        { name: 'Jupyter', icon: SiJupyter, level: 75 }
       ]
     }
   ];
 
   return (
-    <section id="skills" className="min-h-screen bg-black py-20 px-6 relative overflow-hidden">
+    <section id="skills" className="min-h-screen bg-black pt-16 pb-10 px-4 sm:px-6 relative overflow-hidden flex items-center">
       {/* Decorative Background Shapes */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-amethyst/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-40 right-20 w-96 h-96 bg-amethyst-light/8 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-amethyst-dark/12 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 right-1/3 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl"></div>
-        
-        {/* Geometric Decorations */}
-        <div className="absolute top-1/4 right-10 w-20 h-20 border-2 border-amethyst/20 rotate-45"></div>
-        <div className="absolute bottom-1/3 left-16 w-16 h-16 border-2 border-amethyst-light/20 rotate-12"></div>
+        <div className="absolute top-24 left-12 w-56 h-56 bg-amethyst/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-12 w-80 h-80 bg-amethyst-light/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-16 left-1/4 w-72 h-72 bg-amethyst-dark/12 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto max-w-7xl relative z-10">
+      <div className="container mx-auto max-w-5xl relative z-10 w-full">
         {/* Section Title */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-6 md:mb-8"
         >
           <h2 className="section-heading mb-4">
             Technical Skills
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amethyst to-transparent mx-auto"></div>
-          <p className="text-silver/60 mt-4 text-lg font-inter">
-            Expertise across multiple domains
+          <p className="text-silver/75 mt-3 text-base md:text-lg font-inter tracking-wide max-w-3xl mx-auto">
+            Technologies and tools I use to build modern applications and IoT solutions.
           </p>
         </motion.div>
 
-        {/* Skills Categories */}
-        <div className="space-y-12 md:space-y-14">
-          {skillCategories.map((category, categoryIndex) => (
+        {/* Categorized Skills Grid — 2×2 category layout, each with 4 icons in a row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-6 md:gap-y-7 md:gap-x-10 max-w-4xl mx-auto">
+          {categories.map((category, catIndex) => (
             <motion.div
-              key={categoryIndex}
-              initial={{ opacity: 0, y: 50 }}
+              key={category.title}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: catIndex * 0.08 }}
+              className="text-center"
             >
-              {/* Category Title */}
-              <h3 className="text-2xl md:text-3xl font-poppins font-bold text-silver mb-8 text-center md:text-left">
-                <span className="bg-gradient-to-r from-amethyst-light via-amethyst to-amethyst-dark bg-clip-text text-transparent">
-                  {category.title}
-                </span>
+              {/* Category Heading */}
+              <h3 className="text-sm md:text-base font-poppins font-bold text-amethyst mb-3 tracking-wide">
+                {category.title}
               </h3>
 
-              {/* Skills Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 place-items-center max-w-6xl mx-auto md:mx-0">
+              {/* 4-icon grid row */}
+              <div className="grid grid-cols-4 gap-2.5 justify-items-center mx-auto" style={{ maxWidth: '360px' }}>
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
-                    key={skillIndex}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    key={skill.name}
+                    initial={{ opacity: 0, scale: 0.92 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: skillIndex * 0.1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.04 }}
                     whileHover={{ scale: 1.06 }}
                     className="group relative"
                   >
-                    {/* Square Skill Card */}
-                    <div className="w-[92px] h-[92px] relative bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 rounded-lg border border-amethyst/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-amethyst flex flex-col items-center justify-center">
-                      {/* Card Background Gradient on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-amethyst/15 via-transparent to-amethyst-dark/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
-                      {/* Glow Effect on Hover */}
-                      <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{
-                          boxShadow: '0 0 20px rgba(153, 102, 204, 0.4), inset 0 0 12px rgba(153, 102, 204, 0.1)'
-                        }}
+                    <div className="w-[76px] h-[96px] md:w-[80px] md:h-[100px] relative bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 rounded-md border border-amethyst/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-amethyst flex flex-col items-center justify-center">
+                      <div className="absolute inset-0 bg-gradient-to-br from-amethyst/15 via-transparent to-amethyst-dark/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                      <div
+                        className="absolute inset-0 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ boxShadow: '0 0 12px rgba(153, 102, 204, 0.35), inset 0 0 8px rgba(153, 102, 204, 0.08)' }}
                       ></div>
 
-                      {/* Content */}
                       <div className="relative z-10 flex flex-col items-center justify-center h-full w-full px-1">
-                        {/* Icon */}
-                        <div className="mb-1 flex justify-center">
+                        <div className="mb-0.5 flex justify-center">
                           {React.createElement(skill.icon, {
-                            className: 'text-[34px] text-amethyst group-hover:scale-110 transition-transform duration-300',
+                            className: 'text-[22px] md:text-[24px] text-amethyst group-hover:scale-110 transition-transform duration-300',
                             style: {
-                              filter: 'drop-shadow(0 0 10px rgba(153, 102, 204, 0.5))',
+                              filter: 'drop-shadow(0 0 8px rgba(153, 102, 204, 0.45))'
                             }
                           })}
                         </div>
 
-                        {/* Skill Name */}
-                        <p className="text-xs font-poppins font-semibold text-silver text-center group-hover:text-amethyst-light transition-colors duration-300 line-clamp-2 leading-tight mt-0.5">
+                        <p className="text-[9px] md:text-[10px] font-poppins font-semibold text-silver text-center group-hover:text-amethyst-light transition-colors duration-300 leading-tight mb-1.5">
                           {skill.name}
                         </p>
-                      </div>
 
-                      {/* Top Accent Line */}
-                      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-amethyst to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        {/* Proficiency Bar */}
+                        <div className="w-[85%] h-[4px] bg-white/10 rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: skillIndex * 0.08, ease: 'easeOut' }}
+                            className="h-full rounded-full bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light"
+                            style={{ boxShadow: '0 0 6px rgba(153, 102, 204, 0.5)' }}
+                          />
+                        </div>
+                        <span className="text-[7px] md:text-[8px] text-silver/50 font-inter mt-0.5">{skill.level}%</span>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -141,19 +140,6 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom Quote */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-lg md:text-xl text-silver/70 font-inter italic">
-            "Continuously evolving with technology to create innovative solutions"
-          </p>
-        </motion.div>
       </div>
     </section>
   );

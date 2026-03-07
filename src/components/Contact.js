@@ -103,31 +103,31 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="min-h-screen bg-black py-20 px-6 relative overflow-hidden">
+    <section id="contact" className="min-h-screen bg-black pt-16 pb-10 px-4 sm:px-6 relative overflow-hidden flex items-center">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-24 left-10 w-80 h-80 bg-amethyst/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-16 w-96 h-96 bg-amethyst-light/8 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto">
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: -24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-6 md:mb-8"
         >
-          <h2 className="font-poppins font-bold text-4xl md:text-5xl text-silver mb-4">
+          <h2 className="font-poppins font-bold text-3xl md:text-4xl text-silver mb-3">
             CONTACT ME
           </h2>
           <div
-            className="w-24 h-1 bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light mx-auto rounded-full mb-6"
+            className="w-24 h-1 bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light mx-auto rounded-full mb-3"
             style={{ boxShadow: '0 0 14px rgba(153, 102, 204, 0.6)' }}
           ></div>
-          <p className="font-inter text-silver/75 text-lg max-w-3xl mx-auto leading-relaxed">
-            Looking to collaborate on a project or discuss opportunities? I'd love to hear from you. Let's build something great together.
+          <p className="font-inter text-silver/75 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+            Looking to collaborate or discuss opportunities? Let's build something great together.
           </p>
         </motion.div>
 
@@ -137,15 +137,15 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6"
         >
           {/* Left: Contact Details */}
-          <div className="relative rounded-2xl border border-amethyst/35 bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 p-7 md:p-9 overflow-hidden">
+          <div className="relative rounded-xl border border-amethyst/35 bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 p-5 md:p-6 overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amethyst to-transparent"></div>
-            <h3 className="font-poppins text-2xl md:text-3xl font-semibold text-silver mb-7">
+            <h3 className="font-poppins text-lg md:text-xl font-semibold text-silver mb-4">
               Contact Details
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-2.5">
               {contactDetails.map((detail, index) => (
                 <motion.div
                   key={index}
@@ -153,10 +153,10 @@ const Contact = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: index * 0.08 }}
-                  className="group/detail flex items-center gap-4 rounded-xl border border-amethyst/25 bg-black/45 p-4 transition-all duration-300 hover:border-amethyst/50 hover:bg-amethyst/10"
+                  className="group/detail flex items-center gap-3 rounded-lg border border-amethyst/25 bg-black/45 p-3 transition-all duration-300 hover:border-amethyst/50 hover:bg-amethyst/10"
                 >
                   <div
-                    className="w-11 h-11 rounded-lg border border-amethyst/35 bg-gradient-to-br from-amethyst/25 to-amethyst-dark/25 flex items-center justify-center shrink-0 group-hover/detail:scale-110 transition-transform duration-300"
+                    className="w-9 h-9 rounded-md border border-amethyst/35 bg-gradient-to-br from-amethyst/25 to-amethyst-dark/25 flex items-center justify-center shrink-0 group-hover/detail:scale-110 transition-transform duration-300"
                     style={{ boxShadow: '0 0 12px rgba(153, 102, 204, 0.3)' }}
                   >
                     {React.createElement(detail.icon, {
@@ -182,20 +182,20 @@ const Contact = () => {
           </div>
 
           {/* Right: Contact Form */}
-          <div className="relative rounded-2xl border border-amethyst/35 bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 p-7 md:p-9 overflow-hidden">
+          <div className="relative rounded-xl border border-amethyst/35 bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 p-5 md:p-6 overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-amethyst to-transparent"></div>
-            <h3 className="font-poppins text-2xl md:text-3xl font-semibold text-silver mb-7">
+            <h3 className="font-poppins text-lg md:text-xl font-semibold text-silver mb-4">
               Send a Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-3">
               <motion.div
                 initial={{ opacity: 0, x: 10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: 0.15 }}
               >
-                <label htmlFor="name" className="block font-inter text-sm text-silver/70 mb-2">
+                <label htmlFor="name" className="block font-inter text-xs text-silver/70 mb-1">
                   Full Name
                 </label>
                 <input
@@ -206,7 +206,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-lg border border-amethyst/30 bg-black/50 px-4 py-3 font-inter text-silver placeholder-silver/35 focus:outline-none focus:border-amethyst focus:ring-2 focus:ring-amethyst/20 transition-all duration-300"
+                  className="w-full rounded-lg border border-amethyst/30 bg-black/50 px-3 py-2 text-sm font-inter text-silver placeholder-silver/35 focus:outline-none focus:border-amethyst focus:ring-2 focus:ring-amethyst/20 transition-all duration-300"
                   style={{ boxShadow: '0 0 0 0 rgba(153, 102, 204, 0)' }}
                   onFocus={(e) => {
                     e.target.style.boxShadow = '0 0 18px rgba(153, 102, 204, 0.35)';
@@ -223,7 +223,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: 0.22 }}
               >
-                <label htmlFor="email" className="block font-inter text-sm text-silver/70 mb-2">
+                <label htmlFor="email" className="block font-inter text-xs text-silver/70 mb-1">
                   Email
                 </label>
                 <input
@@ -234,7 +234,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-lg border border-amethyst/30 bg-black/50 px-4 py-3 font-inter text-silver placeholder-silver/35 focus:outline-none focus:border-amethyst focus:ring-2 focus:ring-amethyst/20 transition-all duration-300"
+                  className="w-full rounded-lg border border-amethyst/30 bg-black/50 px-3 py-2 text-sm font-inter text-silver placeholder-silver/35 focus:outline-none focus:border-amethyst focus:ring-2 focus:ring-amethyst/20 transition-all duration-300"
                   style={{ boxShadow: '0 0 0 0 rgba(153, 102, 204, 0)' }}
                   onFocus={(e) => {
                     e.target.style.boxShadow = '0 0 18px rgba(153, 102, 204, 0.35)';
@@ -251,7 +251,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: 0.3 }}
               >
-                <label htmlFor="message" className="block font-inter text-sm text-silver/70 mb-2">
+                <label htmlFor="message" className="block font-inter text-xs text-silver/70 mb-1">
                   Message
                 </label>
                 <textarea
@@ -261,8 +261,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows="5"
-                  className="w-full rounded-lg border border-amethyst/30 bg-black/50 px-4 py-3 font-inter text-silver placeholder-silver/35 focus:outline-none focus:border-amethyst focus:ring-2 focus:ring-amethyst/20 transition-all duration-300 resize-none"
+                  rows="3"
+                  className="w-full rounded-lg border border-amethyst/30 bg-black/50 px-3 py-2 text-sm font-inter text-silver placeholder-silver/35 focus:outline-none focus:border-amethyst focus:ring-2 focus:ring-amethyst/20 transition-all duration-300 resize-none"
                   style={{ boxShadow: '0 0 0 0 rgba(153, 102, 204, 0)' }}
                   onFocus={(e) => {
                     e.target.style.boxShadow = '0 0 18px rgba(153, 102, 204, 0.35)';
@@ -282,7 +282,7 @@ const Contact = () => {
                 transition={{ duration: 0.45, delay: 0.38 }}
                 whileHover={{ scale: formStatus.submitting ? 1 : 1.02 }}
                 whileTap={{ scale: formStatus.submitting ? 1 : 0.98 }}
-                className={`w-full rounded-lg px-6 py-3.5 font-poppins text-white text-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+                className={`w-full rounded-lg px-5 py-2.5 font-poppins text-white text-base font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
                   formStatus.submitting 
                     ? 'bg-amethyst/60 cursor-not-allowed' 
                     : 'bg-amethyst hover:bg-amethyst-light'

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-scroll';
+import { motion, AnimatePresence } from 'framer-motion';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -11,19 +12,20 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+
+  const onScroll = useCallback(() => {
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const currentProgress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+    setScrollProgress(currentProgress);
+    setIsScrolled(window.scrollY > 30);
+  }, []);
 
   useEffect(() => {
-    const onScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const currentProgress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      setScrollProgress(currentProgress);
-      setIsScrolled(window.scrollY > 20);
-    };
-
     window.addEventListener('scroll', onScroll);
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [onScroll]);
 
   useEffect(() => {
     const sections = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -53,23 +55,23 @@ function App() {
   return (
     <div className="bg-black text-silver min-h-screen">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-black/95 backdrop-blur-md border-amethyst/30 shadow-lg shadow-amethyst/10' 
-          : 'bg-black/80 backdrop-blur-sm border-amethyst/20'
+          ? 'bg-black/85 backdrop-blur-xl border-b border-amethyst/25 shadow-lg shadow-amethyst/5' 
+          : 'bg-transparent backdrop-blur-sm border-b border-transparent'
       }`}>
-        {/* Progress Bar */}
-        <div className="h-1 bg-gradient-to-r from-black via-amethyst/20 to-black">
-          <div 
-            className="h-full bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light transition-all duration-150" 
+        {/* Scroll Progress Bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-transparent">
+          <motion.div 
+            className="h-full bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light"
             style={{ 
               width: `${scrollProgress}%`,
-              boxShadow: '0 0 10px rgba(153, 102, 204, 0.6)'
+              boxShadow: '0 0 12px rgba(153, 102, 204, 0.7)'
             }}
-          ></div>
+          />
         </div>
 
-        <div className="container mx-auto px-6 py-4">
+        <div className={`container mx-auto px-6 transition-all duration-500 ${isScrolled ? 'py-3' : 'py-4'}`}>
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <Link
@@ -79,17 +81,11 @@ function App() {
               className="cursor-pointer flex items-center gap-3 group"
               aria-label="Navigate to home section"
             >
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-amethyst/40 group-hover:border-amethyst transition-all duration-300"
-                style={{
-                  boxShadow: '0 0 0 0 rgba(153, 102, 204, 0)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 15px rgba(153, 102, 204, 0.6)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 0 0 rgba(153, 102, 204, 0)';
-                }}
-              >
+              <div className={`rounded-full overflow-hidden border-2 transition-all duration-500 ${
+                isScrolled 
+                  ? 'w-9 h-9 border-amethyst/50' 
+                  : 'w-10 h-10 border-amethyst/40'
+              } group-hover:border-amethyst group-hover:shadow-[0_0_18px_rgba(153,102,204,0.6)]`}>
                 <img 
                   src="/jenita-photo.jpg" 
                   alt="Jenita Reshma logo" 
@@ -99,13 +95,18 @@ function App() {
                   }}
                 />
               </div>
-              <span className="text-xl font-poppins font-semibold tracking-wide text-silver group-hover:text-amethyst-light transition-colors duration-300">
-                Jenita
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg font-poppins font-bold tracking-wide text-silver group-hover:text-amethyst-light transition-colors duration-300">
+                  Jenita
+                </span>
+                <span className="text-[10px] font-inter text-amethyst/70 tracking-widest uppercase -mt-0.5">
+                  Portfolio
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden md:flex items-center bg-white/[0.04] border border-white/[0.08] rounded-full px-1.5 py-1.5 gap-0.5">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -114,69 +115,115 @@ function App() {
                   duration={800}
                   offset={-80}
                   spy={true}
-                  activeClass="nav-active"
-                  className="nav-link relative px-5 py-2 text-base font-poppins font-medium text-silver/90 cursor-pointer transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 focus:ring-offset-black rounded"
+                  onSetActive={() => setActiveSection(item.to)}
+                  className={`nav-pill relative px-4 py-1.5 text-sm font-poppins font-medium cursor-pointer transition-all duration-300 rounded-full focus:outline-none focus:ring-2 focus:ring-amethyst/50 ${
+                    activeSection === item.to
+                      ? 'text-white bg-amethyst/20 shadow-[0_0_12px_rgba(153,102,204,0.3)]'
+                      : 'text-silver/70 hover:text-silver hover:bg-white/[0.06]'
+                  }`}
                   aria-label={`Navigate to ${item.name} section`}
                 >
                   {item.name}
-                  {/* Underline Animation */}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light group-hover:w-full transition-all duration-300 ease-out"
-                    style={{
-                      boxShadow: '0 0 8px rgba(153, 102, 204, 0.6)'
-                    }}
-                  ></span>
+                  {activeSection === item.to && (
+                    <motion.div
+                      layoutId="navIndicator"
+                      className="absolute inset-0 rounded-full border border-amethyst/40 bg-amethyst/10"
+                      style={{ zIndex: -1 }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </Link>
               ))}
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Desktop CTA */}
+            <div className="hidden md:block">
+              <Link
+                to="contact"
+                smooth={true}
+                duration={800}
+                offset={-80}
+                className="px-5 py-2 text-sm font-poppins font-semibold text-white bg-gradient-to-r from-amethyst-dark to-amethyst rounded-full cursor-pointer transition-all duration-300 hover:shadow-[0_0_20px_rgba(153,102,204,0.5)] hover:scale-105 active:scale-95"
+              >
+                Hire Me
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button — animated hamburger */}
             <button
               type="button"
-              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="md:hidden text-silver border-2 border-amethyst/40 rounded-lg px-4 py-2 hover:bg-amethyst/15 hover:border-amethyst transition-all duration-300 font-poppins font-medium focus:outline-none focus:ring-2 focus:ring-amethyst focus:ring-offset-2 focus:ring-offset-black"
-              style={{
-                boxShadow: '0 0 0 0 rgba(153, 102, 204, 0)'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.boxShadow = '0 0 15px rgba(153, 102, 204, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.boxShadow = '0 0 0 0 rgba(153, 102, 204, 0)';
-              }}
+              className="md:hidden relative w-10 h-10 flex items-center justify-center rounded-lg border border-amethyst/30 hover:border-amethyst hover:bg-amethyst/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-amethyst/50"
             >
-              {menuOpen ? '✕ Close' : '☰ Menu'}
+              <div className="flex flex-col items-center justify-center gap-[5px]">
+                <span className={`block w-5 h-[2px] bg-amethyst rounded-full transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                <span className={`block w-5 h-[2px] bg-amethyst rounded-full transition-all duration-300 ${menuOpen ? 'opacity-0 scale-0' : ''}`} />
+                <span className={`block w-5 h-[2px] bg-amethyst rounded-full transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+              </div>
             </button>
           </div>
 
           {/* Mobile Navigation Menu */}
-          {menuOpen && (
-            <div className="md:hidden mt-4 p-5 rounded-xl bg-gradient-to-br from-gray-900/95 via-black/95 to-gray-900/95 border-2 border-amethyst/30 backdrop-blur-md space-y-3"
-              style={{
-                boxShadow: '0 0 30px rgba(153, 102, 204, 0.3), inset 0 0 20px rgba(153, 102, 204, 0.1)'
-              }}
-            >
-              {navItems.map((item, index) => (
-                <Link
-                  key={item.name}
-                  to={item.to}
-                  smooth={true}
-                  duration={800}
-                  offset={-80}
-                  onClick={() => setMenuOpen(false)}
-                  spy={true}
-                  activeClass="mobile-nav-active"
-                  className="mobile-nav-link block px-4 py-3 text-base font-poppins font-medium text-silver/85 hover:text-amethyst-light hover:bg-amethyst/10 rounded-lg cursor-pointer transition-all duration-300 border-l-4 border-transparent hover:border-amethyst"
-                  style={{
-                    animationDelay: `${index * 0.1}s`
-                  }}
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="md:hidden overflow-hidden"
+              >
+                <div className="mt-3 p-4 rounded-xl bg-black/90 border border-amethyst/25 backdrop-blur-xl space-y-1"
+                  style={{ boxShadow: '0 8px 32px rgba(153, 102, 204, 0.15)' }}
                 >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          )}
+                  {navItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.06, duration: 0.3 }}
+                    >
+                      <Link
+                        to={item.to}
+                        smooth={true}
+                        duration={800}
+                        offset={-80}
+                        onClick={() => setMenuOpen(false)}
+                        spy={true}
+                        onSetActive={() => setActiveSection(item.to)}
+                        className={`block px-4 py-2.5 text-sm font-poppins font-medium rounded-lg cursor-pointer transition-all duration-300 ${
+                          activeSection === item.to
+                            ? 'text-amethyst-light bg-amethyst/15 border-l-[3px] border-amethyst'
+                            : 'text-silver/75 hover:text-amethyst-light hover:bg-amethyst/8 border-l-[3px] border-transparent'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.35, duration: 0.3 }}
+                    className="pt-2"
+                  >
+                    <Link
+                      to="contact"
+                      smooth={true}
+                      duration={800}
+                      offset={-80}
+                      onClick={() => setMenuOpen(false)}
+                      className="block w-full text-center px-4 py-2.5 text-sm font-poppins font-semibold text-white bg-gradient-to-r from-amethyst-dark to-amethyst rounded-lg cursor-pointer transition-all duration-300 hover:shadow-[0_0_16px_rgba(153,102,204,0.4)]"
+                    >
+                      Hire Me
+                    </Link>
+                  </motion.div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </nav>
 

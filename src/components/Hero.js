@@ -181,46 +181,6 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* FOOTER - Website URL with Globe Icon */}
-        <motion.div 
-          className="flex items-center space-x-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ 
-            delay: 1.4,
-            duration: 1,
-            ease: "easeOut"
-          }}
-        >
-          {/* Globe Icon */}
-          <div className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center">
-            <svg 
-              className="w-5 h-5 text-white" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" 
-              />
-            </svg>
-          </div>
-          
-          {/* Website URL */}
-          <a 
-            href="https://jenita.dev" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-white text-lg md:text-xl font-sans hover:text-gray-300 transition-colors duration-300"
-          >
-            jenita.dev
-          </a>
-        </motion.div>
-
         {/* Decorative dots (three dots menu style) */}
         <motion.div 
           className="absolute top-8 right-8 flex space-x-2"

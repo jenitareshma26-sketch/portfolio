@@ -338,29 +338,13 @@ p {
 }
 
 /* Navigation Link Styles */
-.nav-link {
+.nav-pill {
   position: relative;
+  z-index: 1;
 }
 
-.nav-link:hover {
-  color: #9966CC;
-  text-shadow: 0 0 10px rgba(153, 102, 204, 0.5);
-}
-
-.nav-link.nav-active {
-  color: #9966CC;
-  font-weight: 600;
-}
-
-.nav-link.nav-active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, #7744AA 0%, #9966CC 50%, #B399D6 100%);
-  box-shadow: 0 0 10px rgba(153, 102, 204, 0.6);
+.nav-pill:hover {
+  text-shadow: 0 0 8px rgba(153, 102, 204, 0.35);
 }
 
 /* Mobile Navigation Link Styles */
