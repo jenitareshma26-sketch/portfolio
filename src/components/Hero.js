@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Hero = () => {
   const subtitles = [
     "Full-Stack Developer",
-    "IoT Systems Engineer",
+    "IoT Enthusiast",
     "Computer Engineering Student"
   ];
 
