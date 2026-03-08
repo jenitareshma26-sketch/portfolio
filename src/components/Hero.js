@@ -181,51 +181,6 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Decorative dots (three dots menu style) */}
-        <motion.div 
-          className="absolute top-8 right-8 flex space-x-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ 
-            delay: 1.6,
-            duration: 1,
-            ease: "easeOut"
-          }}
-        >
-          <motion.div 
-            className="w-3 h-3 bg-amethyst rounded-full"
-            animate={{ 
-              y: [0, -8, 0]
-            }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              delay: 0
-            }}
-          ></motion.div>
-          <motion.div 
-            className="w-3 h-3 bg-amethyst rounded-full"
-            animate={{ 
-              y: [0, -8, 0]
-            }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              delay: 0.2
-            }}
-          ></motion.div>
-          <motion.div 
-            className="w-3 h-3 bg-amethyst rounded-full"
-            animate={{ 
-              y: [0, -8, 0]
-            }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              delay: 0.4
-            }}
-          ></motion.div>
-        </motion.div>
       </div>
     </section>
   );
