@@ -29,63 +29,13 @@ const About = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-amethyst to-amethyst-light mx-auto mt-4"></div>
         </motion.div>
         
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center px-4 md:px-8">
-          
-          {/* LEFT SIDE - Profile Photo */}
+        {/* About Content */}
+        <div className="px-4 md:px-8 max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center relative"
-          >
-            {/* Background Gradient Circles */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="absolute w-96 h-96 md:w-[450px] md:h-[450px] bg-gradient-to-br from-amethyst/30 via-amethyst-light/20 to-amethyst-dark/30 rounded-full blur-3xl opacity-60 animate-pulse"></div>
-              <div className="absolute w-80 h-80 md:w-96 md:h-96 bg-gradient-to-tl from-purple-600/20 via-amethyst/25 to-purple-800/20 rounded-full blur-2xl opacity-50"></div>
-            </div>
-
-            {/* Hexagon Container with floating animation */}
-            <div className="relative hexagon-border hexagon-glow-outer group z-10">
-              {/* Hexagon Photo Container */}
-              <div className="relative w-80 h-80 md:w-96 md:h-96 transform group-hover:scale-105 transition-all duration-700 ease-out">
-                {/* Outer hexagon border with enhanced gradient */}
-                <div className="absolute inset-0 hexagon-clip" 
-                  style={{
-                    background: 'linear-gradient(135deg, #B399D6 0%, #9966CC 25%, #E0BBF7 50%, #7744AA 75%, #B399D6 100%)',
-                    padding: '8px',
-                    filter: 'brightness(1.1)'
-                  }}
-                >
-                  {/* Inner hexagon with image */}
-                  <div className="w-full h-full hexagon-clip bg-black relative overflow-hidden">
-                    <img 
-                      src="/jenita-about.jpg" 
-                      alt="Jenita Reshma - Computer Engineering Student specializing in IoT and Full-Stack Development" 
-                      className="w-full h-full object-cover hexagon-clip brightness-100 group-hover:brightness-110 transition-all duration-500"
-                      onError={(e) => {
-                        e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzg0IiBoZWlnaHQ9IjM4NCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzg0IiBoZWlnaHQ9IjM4NCIgZmlsbD0iIzExMSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNjQiIGZpbGw9IiNDMEMwQzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5KUjwvdGV4dD48L3N2Zz4=';
-                      }}
-                    />
-                    
-                    {/* Shimmer overlay on hover */}
-                    <div className="absolute inset-0 hexagon-clip bg-gradient-to-br from-amethyst/0 via-amethyst-light/20 to-amethyst/0 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                    
-                    {/* Bottom gradient overlay */}
-                    <div className="absolute inset-0 hexagon-clip bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT SIDE - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
             {/* About Heading */}

@@ -8,37 +8,37 @@ const Skills = () => {
     {
       title: 'Programming Languages',
       skills: [
-        { name: 'Python', icon: SiPython, level: 90 },
-        { name: 'C', icon: SiC, level: 85 },
-        { name: 'JavaScript', icon: SiJavascript, level: 80 },
-        { name: 'Java', icon: FaJava, level: 70 }
+        { name: 'Python', icon: SiPython },
+        { name: 'C', icon: SiC },
+        { name: 'JavaScript', icon: SiJavascript },
+        { name: 'Java', icon: FaJava }
       ]
     },
     {
       title: 'Web Development',
       skills: [
-        { name: 'HTML', icon: SiHtml5, level: 92 },
-        { name: 'CSS', icon: FaCss3Alt, level: 88 },
-        { name: 'React', icon: SiReact, level: 82 },
-        { name: 'FastUI', icon: FaLightbulb, level: 70 }
+        { name: 'HTML', icon: SiHtml5 },
+        { name: 'CSS', icon: FaCss3Alt },
+        { name: 'React', icon: SiReact },
+        { name: 'FastUI', icon: FaLightbulb }
       ]
     },
     {
       title: 'IoT & Embedded Systems',
       skills: [
-        { name: 'Arduino', icon: SiArduino, level: 88 },
-        { name: 'ESP8266', icon: FaNetworkWired, level: 82 },
-        { name: 'Sensors', icon: FaMicrochip, level: 85 },
-        { name: 'Automation', icon: FaRobot, level: 78 }
+        { name: 'Arduino', icon: SiArduino },
+        { name: 'ESP8266', icon: FaNetworkWired },
+        { name: 'Sensors', icon: FaMicrochip },
+        { name: 'Automation', icon: FaRobot }
       ]
     },
     {
       title: 'Development Tools',
       skills: [
-        { name: 'Git', icon: SiGit, level: 85 },
-        { name: 'VS Code', icon: FaCode, level: 92 },
-        { name: 'Canva', icon: SiCanva, level: 80 },
-        { name: 'Jupyter', icon: SiJupyter, level: 75 }
+        { name: 'Git', icon: SiGit },
+        { name: 'VS Code', icon: FaCode },
+        { name: 'Canva', icon: SiCanva },
+        { name: 'Jupyter', icon: SiJupyter }
       ]
     }
   ];
@@ -98,7 +98,7 @@ const Skills = () => {
                     whileHover={{ scale: 1.06 }}
                     className="group relative"
                   >
-                    <div className="w-[76px] h-[96px] md:w-[80px] md:h-[100px] relative bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 rounded-md border border-amethyst/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-amethyst flex flex-col items-center justify-center">
+                    <div className="w-[76px] h-[76px] md:w-[80px] md:h-[80px] relative bg-gradient-to-br from-gray-900/80 via-black/90 to-gray-900/80 rounded-md border border-amethyst/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-amethyst flex flex-col items-center justify-center">
                       <div className="absolute inset-0 bg-gradient-to-br from-amethyst/15 via-transparent to-amethyst-dark/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                       <div
@@ -116,22 +116,9 @@ const Skills = () => {
                           })}
                         </div>
 
-                        <p className="text-[9px] md:text-[10px] font-poppins font-semibold text-silver text-center group-hover:text-amethyst-light transition-colors duration-300 leading-tight mb-1.5">
+                        <p className="text-[10px] md:text-[11px] font-poppins font-semibold text-silver text-center group-hover:text-amethyst-light transition-colors duration-300 leading-tight">
                           {skill.name}
                         </p>
-
-                        {/* Proficiency Bar */}
-                        <div className="w-[85%] h-[4px] bg-white/10 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: skillIndex * 0.08, ease: 'easeOut' }}
-                            className="h-full rounded-full bg-gradient-to-r from-amethyst-dark via-amethyst to-amethyst-light"
-                            style={{ boxShadow: '0 0 6px rgba(153, 102, 204, 0.5)' }}
-                          />
-                        </div>
-                        <span className="text-[7px] md:text-[8px] text-silver/50 font-inter mt-0.5">{skill.level}%</span>
                       </div>
                     </div>
                   </motion.div>
